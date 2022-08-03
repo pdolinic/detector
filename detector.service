@@ -1,0 +1,16 @@
+[Unit]
+Description=Detector for Sound & Microphone, Camera, Fileless (Malware) & Netstat Listener Counters
+ 
+[Service]
+Type=notify
+#StandardOutput=syslog
+#StandardError=syslog
+SyslogIdentifier=detector
+ExecStart=/usr/local/bin/detector/runner.sh
+Restart=always
+RestartSec=5
+TimeoutSec=5
+WatchdogSec=30
+ 
+[Install]
+WantedBy=multi-user.target
