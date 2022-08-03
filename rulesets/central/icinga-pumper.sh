@@ -1,20 +1,7 @@
 ##!/bin/bash
 
-##Description: Small Check for Educational Purposes 
-##Author: pdolinic@netways.de, Junior Consultant at NETWAYS Professional Services GmbH. Deutschherrnstr. 15-19 90429 Nuremberg. 
-
-#License = GNU GPLv2
-
-#This program is distributed in the hope that it will be useful,
-#but WITHOUT ANY WARRANTY; without even the implied warranty of
-#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#GNU General Public License for more details.
-
-##This Script is not intended with security in mind, and currently does not implement any length or size checks: It depends on the security of the Icinga/Nagios-Account.
-
-
 ### prep
-#Generate Key & CS like
+#Generate Key & CSR like
 #icinga2 pki new-cert --cn ubsc-generic --key /var/lib/icinga2/certs/ubsc-generic.key --csr /var/lib/icinga2/certs/ubsc-generic.csr
 #Sign CSR like
 #icinga2 pki sign-csr --csr /var/lib/icinga2/certs/ubsc-generic.csr --cert /var/lib/icinga2/certs/ubsc-generic.crt
