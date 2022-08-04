@@ -98,5 +98,5 @@ blacklist snd_hda_intel #this will block the snd_hda_intel module, available aft
 
 ## Writing rules
 - Just drop a file to the "ruleset"-folder. 
-- In the best case create a function and call it, and append the output to /var/log/detector.log. 
+- In the best case create a function and call it, and append the output to `/var/log/detector.log`. 
 - You want a format such as `module=Yourmodule, status=ON` (or OFF, or `output=`).
