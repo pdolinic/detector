@@ -1,6 +1,10 @@
 # Detector OSS IDS
 
 General Information: 
+
+Blogpost here: https://www.netways.de/blog/2022/08/04/detector-oss-ids-how-to-shellscript-your-own-little-intrusion-detection-system-with-honeypots-and-outputs-to-icinga-and-elastic/
+
+- Most well tested under Fedora 36.
 - GPLv3 License for detector OSS IDS. 
 - All other used Open Source tools & libraries used are subject to the original developers rights & their original licenses - detector uses them to provide a free, fast and convenient Open Source IDS solution (for myself and anyone else who wants to).
 
@@ -26,6 +30,7 @@ See `/central/icinga-pumper.sh` for more
 icinga2 pki new-cert --cn ubsc-generic --key /var/lib/icinga2/certs/ubsc-generic.key --csr /var/lib/icinga2/certs/ubsc-generic.csr
 icinga2 pki sign-csr --csr /var/lib/icinga2/certs/ubsc-generic.csr --cert /var/lib/icinga2/certs/ubsc-generic.crt
 ```
+- Create a template for a passive check, apply the passive check over a (Linux)-hostgroup and set up an API-User with the “actions/process-check-result” permission
 - Grep over the `detector.log` with keywords and on hits send passive-checks back to Icinga
 
 ## Outputting to Logstash
