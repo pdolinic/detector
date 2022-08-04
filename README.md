@@ -76,7 +76,7 @@ filter {
 ```
 ### Filebeat
 
-Filebeat needs to be configured appropriately: Usbguard can write to syslog, or to the default usbguard-log (which is chosen here as an example):
+Filebeat needs to be configured appropriately: Usbguard can write to syslog, or to the default ´/var/log/detector.log´ (which is chosen here as an example):
 
 ```
 - type: log
@@ -97,4 +97,6 @@ blacklist snd_hda_intel #this will block the snd_hda_intel module, available aft
 ```
 
 ## Writing rules
-To write a rule, just drop a file to the "ruleset"-folder. In the best case create a function and call it, and append the output to /var/log/detector.log. You want a format such as module=Yourmodule, status=ON or OFF.
+- Just drop a file to the "ruleset"-folder. 
+- In the best case create a function and call it, and append the output to /var/log/detector.log. 
+- You want a format such as ´module=Yourmodule, status=ON´ (or OFF, or output=).
