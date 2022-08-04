@@ -22,7 +22,7 @@ This small personal project follows 3 basic goals: a) minimal b) trustable c) mo
 
 - Modules: 5) run checks 6) grep for exit codes  6) append a time-stamp 7) append a module tag (with a possible KV - filter for Logstash-Pipelines) ->> write to detecor-logfile | Optional:  9) output to Elastic (via Filebeat -> Logstash-Pipelines) 10) output to Icinga 2 (via passive-checks for more logic & free alerting)
 
-## Outputting to Icinga
+## Outputting to Icinga 2
 See `/central/icinga-pumper.sh` for more
 - Generate a certificate, CSR and sign it:
 
