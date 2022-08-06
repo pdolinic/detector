@@ -1,8 +1,9 @@
 #!/bin/bash
 
+if [ "$EUID" -ne 0 ]; then echo "Installation aborted, please run the ./install.sh as root!";sleep 2; exit;fi
+
 distro_check()
 {(/usr/bin/grep "^ID" /etc/os-release | cut -d "=" -f2)}
-
 
 # Export Variables for Shellcheck
 export fedora && export rhel && export debian && export ubuntu && export distro_check
