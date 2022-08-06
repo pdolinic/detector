@@ -103,10 +103,6 @@ do
           	/usr/bin/docker pull aquasec/tracee;
              fi
           fi
-		  # Move, set & activate tracee
-		  mkdir -p /opt/detector/rulesets/tracee
-		  cp ./rulesets/tracee/tracee.sh /opt/detector/rulesets/tracee/tracee.sh
-		  bash /opt/detector/rulesets/tracee/tracee.sh
 	      ;;
         6)
 	# Honeypot Autodropper POC
