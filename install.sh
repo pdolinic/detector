@@ -78,31 +78,35 @@ do
             ;;
         4)
            # echo "Enable & Start USBGUARD? Lockout for unconnected USB"
-	systemctl is-active --quiet usbguard
-	if [ $? -ne 0 ]; then
-	usbguard generate-policy > /etc/usbguard/rules.conf;
-	systemctl enable usbguard && systemctl start usbguard;
-	fi;;
-        5)
-	# Install Docker for tracee
-if [ "$distro_check" == "$fedora" ] || [ "$distro_check" == "$rhel" ] 
-then 
-command -v /bin/docker >/dev/null 2>1 && command -v /bin/podman >/dev/null 2>1 
-if [ $? -eq 1 ]; then
-    	dnf install podman podman-docker -y;
-	/usr/bin/docker pull aquasec/tracee;
- fi
-fi
-#Ubuntu
-if [ "$distro_check" == "$ubuntu" ] || [ "$distro_check" == "$debian" ]; then
-	command -v /usr/bin/docker >/dev/null 2>&1
-
-if [ $? -eq 1 ]
-then
-	apt install docker -y;
-	/usr/bin/docker pull aquasec/tracee;
-   fi
-fi
+      	systemctl is-active --quiet usbguard
+      	if [ $? -ne 0 ]; then
+      	usbguard generate-policy > /etc/usbguard/rules.conf;
+      	systemctl enable usbguard && systemctl start usbguard;
+      	fi;;
+              5)
+      	# Install Docker for tracee
+          if [ "$distro_check" == "$fedora" ] || [ "$distro_check" == "$rhel" ] 
+          then 
+          command -v /bin/docker >/dev/null 2>1 && command -v /bin/podman >/dev/null 2>1 
+          if [ $? -eq 1 ]; then
+              	dnf install podman podman-docker -y;
+          	/usr/bin/docker pull aquasec/tracee;
+           fi
+          fi
+          #Ubuntu
+          if [ "$distro_check" == "$ubuntu" ] || [ "$distro_check" == "$debian" ]; then
+          	command -v /usr/bin/docker >/dev/null 2>&1
+          
+          if [ $? -eq 1 ]
+          then
+          	apt install docker -y;
+          	/usr/bin/docker pull aquasec/tracee;
+             fi
+          fi
+		  # Move, set & activate tracee
+		  mkdir -p /opt/detector/rulesets/tracee
+		  cp ./rulesets/tracee/tracee.sh /opt/detector/rulesets/tracee/tracee.sh
+		  bash /opt/detector/rulesets/tracee/tracee.sh
 	      ;;
         6)
 	# Honeypot Autodropper POC
@@ -161,4 +165,3 @@ chmod -R 750 /opt/detector/rulesets
 systemctl daemon-reload
 systemctl enable detector.service
 systemctl start detector.service
-
