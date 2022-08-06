@@ -1,10 +1,6 @@
-##!/bin/bash
+#!/bin/bash
 
-### prep
-#Generate Key & CSR like
-#icinga2 pki new-cert --cn ubsc-generic --key /var/lib/icinga2/certs/ubsc-generic.key --csr /var/lib/icinga2/certs/ubsc-generic.csr
-#Sign CSR like
-#icinga2 pki sign-csr --csr /var/lib/icinga2/certs/ubsc-generic.csr --cert /var/lib/icinga2/certs/ubsc-generic.crt
+##currently deactivated for testing
 
 #Exit Codes
 #Exit_Codes=" >> 0:OK, 1:Warn, 2:Critical, 3:Unkown << "
