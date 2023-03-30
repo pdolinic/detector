@@ -89,7 +89,10 @@ Filebeat needs to be configured appropriately: Detector can write to syslog, or 
 ```
 
 ## Example Blocking Devices for Privacy
-Example: This is could be done via "/etc/modprobe.d/blacklist.conf"
+First find out the module name via `grep modulename /proc/modules` or `lsmod | grep modulename`
+Intel often uses `snd_hda_intel` or `snd_hda_codec`
+Once you've identified the module, you can unload it using the `rmmod` or `modprobe -r` command. 
+To make it persistent add it to the modprobe directory with a  "/etc/modprobe.d/blacklist.conf"
 
 ```
 blacklist snd_hda_intel #this will block the snd_hda_intel module, available after next restart
