@@ -89,10 +89,11 @@ Filebeat needs to be configured appropriately: Detector can write to syslog, or 
 ```
 
 ## Example Blocking Devices for Privacy
-- First find out the module name via `grep modulename /proc/modules` or `lsmod | grep modulename`.
-Intel often uses `snd_hda_intel` or `snd_hda_codec`.
+- Firstly run the `microphone` check to see where your mic is located at, then you can look for codecs on cat `/proc/asound/card$/codec#$`
+- Next confirm outthe module name via `grep modulename /proc/modules` or `lsmod | grep modulename`.
+Often that is `snd_hda_intel` or `snd_hda_codec`, there is also `snd_hda_codec_realtek` for example.
 - Once you've identified the module, you can unload it using the `rmmod` or `modprobe -r` command. 
-To make it persistent add it to the modprobe directory with a preceeding `blacklist` , for example in `/etc/modprobe.d/blacklist.conf
+To make it persistent add it to the modprobe directory with a preceeding `blacklist` , for example in `/etc/modprobe.d/blacklist.conf`.
 
 ```
 blacklist snd_hda_intel #this will block the snd_hda_intel module, available after next restart
